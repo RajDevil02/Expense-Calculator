@@ -32,6 +32,8 @@ function gopost(){
     redirect: 'follow', // manual, *follow, error
     //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify({date: daExpense, month: txMonth, category: drCategory, Amount: txAmount, detail: txDetail}) // body data type must match "Content-Type" header
+  }).then(d=>{
+  	alert("The Response is Submitted");
   });
   
   
@@ -80,6 +82,13 @@ function monthFilter(response){
 	document.getElementById('app').innerHTML = response[monthFilter][1];
 }
 
+function hello() {
+	document.getElementById("myForm").reset();
+}
+
+document.getElementById("myForm").addEventListener("click", function(event){
+  event.preventDefault()
+});
 
 
 
@@ -89,13 +98,8 @@ function monthFilter(response){
 	
 
 
-//document.getElementById("btn").addEventListener("click",goget);
-
-//document.getElementById("btn1").addEventListener("click",gopost);
-
 document.getElementById("submit").addEventListener("click", gopost);
-document.getElementById("cget").addEventListener("click", goget);
-document.getElementById("sample").addEventListener("click", monthFilter);
+
 
 
 

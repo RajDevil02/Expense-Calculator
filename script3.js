@@ -10,6 +10,7 @@ if (time < 12) {
   greeting = "Good Evening";
 }
 document.getElementById("greet").innerHTML = greeting;
+allFunction();
 
 }
 
@@ -58,27 +59,31 @@ function onlyCategory(){
 
 
 function checkfun(res){
-  var stat1 = ""
-  for (var i=0; i<res.length; i++){
-    stat1 = stat1+"<br>"+res[i];
-  };
-  document.getElementById("king").innerHTML = stat1;
+  
+  var idSet = ['totex', 'netex', 'avgex', 'navgex', 'maxmon', 'maxcat', 'minmon', 'mincat'];
+  for (var i=0; i<idSet.length;i++){
+    var invalue = idSet[i];
+    document.getElementById(invalue).value = res[i][1];
+    document.getElementById(invalue).readOnly = true;
+  }
 }
 
 function checkfun1(res){
-  var stat1 = ""
-  for (var i=0; i<res.length; i++){
-    stat1 = stat1+"<br>"+res[i];
-  };
-  document.getElementById("Monthly").innerHTML = stat1;
+  var idSet = ["jan",  "feb",  "mar",  "apr",  "may",  "jun",  "jul",  "aug",  "sep",  "oct",  "nov",  "dec"];
+  for (var i=0; i<idSet.length;i++){
+    var invalue = idSet[i];
+    document.getElementById(invalue).value = res[i][1];
+    document.getElementById(invalue).readOnly = true;
+  }
 }
 
 function checkfun2(res){
-   var stat1 = ""
-  for (var i=0; i<res.length; i++){
-    stat1 = stat1+"<br>"+res[i];
-  };
-  document.getElementById("Category").innerHTML = stat1;
+  var idSet = ["Pho",  "DTH",  "Mod",  "Foo",  "Tra",  "Mov",  "Hai",  "Mon",  "Pet",  "Oth",  "Inv",  "Rei"];
+  for (var i=0; i<idSet.length;i++){
+    var invalue = idSet[i];
+    document.getElementById(invalue).value = res[i][1];
+    document.getElementById(invalue).readOnly = true;
+  }
 }
 
 function allFunction(){

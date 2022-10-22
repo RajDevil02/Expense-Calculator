@@ -1,6 +1,7 @@
 body{
 	margin: 0;
-	background-color: #5d0080;
+	background-color: #000000;
+	
 }
 h1 {
 	background-color: #d7be0a;
@@ -70,4 +71,41 @@ hr {
 	margin: 0;
 	padding: 0;
 }
+
+/*------------------------Overall Report--------------------*/
+
+
+.topics {
+	font-size: 50px;
+	font-family: cursive;
+}
+
+.tabstyle table{
+	border-collapse: collapse;
+}
+
+.tabstyle td {
+	padding:  1px;
+}
+
+
+button {
+	background-color: green;
+	color: white;
+	width: 71px;
+	height: 32px;
+	border-radius: 7px;
+}
+
+button:hover {
+	background-color: white;
+	color: green;
+
+}
+
+input, select{
+	background-color: red;
+	color: white;
+}
+
 
