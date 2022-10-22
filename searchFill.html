@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Expense Chart</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	
+</head>
+<body onload="greetings()">
+	
+		<div class="side-nav" style="height: 100%">
+			<h2>Options</h2>
+			<hr>
+			<ol>
+				<li><a href="index.html">Main Page</a></li><hr>
+				<li><a href="searchFill.html">Search filter</a></li><hr>
+				<li><a href="overallReport.html">Overall Report</a></li><hr>
+			</ol>		
+		</div>
+
+		<div class="header">
+			<h1 class="greetings">Hi Praveen!!! <span id="greet"></span></h1>
+		</div>
+		<div class="entry">
+			<h2>Month-wise</h2>
+			<select name="cars1" id="onMonth">
+			<option value="January">January</option>
+			  <option value="February">February</option>
+			  <option value="March">March</option>
+			  <option value="April">April</option>
+			  <option value="May">May</option>
+			  <option value="June">June</option>
+			  <option value="July">July</option>
+			  <option value="August">August</option>
+			  <option value="September">September</option>
+			  <option value="October">October</option>
+			  <option value="November">November</option>
+			  <option value="December">December</option>
+			</select>
+
+			<input type="text" id="mon_text">
+			<button id="mon_wise">Submit</button>
+
+			<h2>Category-Wise</h2>
+			<select name="categoryType" id="onCategoryType">
+			  
+			  <option value="Phone Recharge">Phone Recharge</option>
+			  <option value="DTH Recharge">DTH Recharge</option>
+			  <option value="Modem Recharge">Modem Recharge</option>
+			  <option value="Food">Food</option>
+			  <option value="Travel">Travel</option>
+			  <option value="Movie">Movie</option>
+			  <option value="Haircut">Haircut</option>
+			  <option value="Monthly Quota">Monthly Quota</option>
+			  <option value="Petrol">Petrol</option>
+			  <option value="Other Expenses">Other Expenses</option>
+			  <option value="Investments">Investments</option>
+			  <option value="Reimbursed">Reimbursed</option>
+			</select>
+
+			<input type="text" id="cate_text">
+			<button id="cate_wise">Submit</button>
+
+		<h2>Mixed Detail</h2>
+		
+			<select name="cars1" id="months1">
+			  
+			  <option value="January">January</option>
+			  <option value="February">February</option>
+			  <option value="March">March</option>
+			  <option value="April">April</option>
+			  <option value="May">May</option>
+			  <option value="June">June</option>
+			  <option value="July">July</option>
+			  <option value="August">August</option>
+			  <option value="September">September</option>
+			  <option value="October">October</option>
+			  <option value="November">November</option>
+			  <option value="December">December</option>
+			</select>
+
+			<select name="categoryType" id="categoryType1">
+			  
+			  <option value="Phone Recharge">Phone Recharge</option>
+			  <option value="DTH Recharge">DTH Recharge</option>
+			  <option value="Modem Recharge">Modem Recharge</option>
+			  <option value="Food">Food</option>
+			  <option value="Travel">Travel</option>
+			  <option value="Movie">Movie</option>
+			  <option value="Haircut">Haircut</option>
+			  <option value="Monthly Quota">Monthly Quota</option>
+			  <option value="Petrol">Petrol</option>
+			  <option value="Other Expenses">Other Expenses</option>
+			  <option value="Investments">Investments</option>
+			  <option value="Reimbursed">Reimbursed</option>
+			</select>
+
+			<input type="text" id="mix_text">
+			<button id="mix_wise">Submit</button>
+			
+		</div>
+
+		<script src="script2.js"></script>
+
+		
+
+		
+</body>
+</html>
