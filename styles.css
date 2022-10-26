@@ -108,4 +108,47 @@ input, select{
 	color: white;
 }
 
+/*------------------------Media Queries--------------------*/
+@media only screen and (max-width: 600px) {
+  .side-nav {
+	position:  fixed;
+	background-color: #d5d5d5;
+	color:  white;
+	height: 100%;
+	width: 75px;
+	text-align: center;
+	top: 0;
+	
+}
+.side-nav > h2 {
+	font-size: 15px;
+	
+}
+.side-nav li {
+	list-style: none;
+	font-size: 15px;
+	height: 40px;
+	padding: 5px;
 
+
+}
+
+h1 {
+	background-color: #d7be0a;
+	position: relative;
+	left: 75px;
+	margin: 0;
+	font-size: 18px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry {
+	position: relative;
+	left: 71px;
+	top: 0;
+	padding-left: 5px;
+	color: #d7be0a;
+	font-size: 18px;
+
+}
+}
