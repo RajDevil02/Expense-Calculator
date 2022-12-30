@@ -105,5 +105,7 @@ document.getElementById("submit").addEventListener("click", gopost);
 
 //Details: HTML Page
 
+//Dimension 318*731
+
 
 

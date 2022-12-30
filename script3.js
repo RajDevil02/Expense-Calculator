@@ -92,4 +92,4 @@ function allFunction(){
   onlyCategory();
 }
 
-document.getElementById("buttc").addEventListener("click", allFunction);
+
