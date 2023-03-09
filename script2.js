@@ -119,3 +119,60 @@ function categoryFilter(response){
 document.getElementById("mix_wise").addEventListener("click", OverallData);
 document.getElementById("mon_wise").addEventListener("click", onlyMonth);
 document.getElementById("cate_wise").addEventListener("click", onlyCategory);
+
+
+
+// ---------------------------------------------- For the Monthly Details Section-----------------------------------------------------
+
+function getMonthDetails(){
+	var url = "https://script.google.com/macros/s/AKfycbzFuxcwsH7du38xEDXVL7f93102cWfnx7vVxiwkZXZScqbTncKMLp0BCEvDZz3URNbD/exec";//"All Details Script"
+	
+	fetch(url)
+	.then(d => d.json())
+	.then(d => {
+		monthWiseFilter(d);
+		//document.getElementById("app").innerHTML = kk;
+		//document.getElementById("app1").value = d;
+	}).catch((err) => {
+    alert(err)
+});
+	
+}
+
+function monthWiseFilter(allDetails){
+	var month = document.getElementById("onMonth").value;
+	var filteredDetails = [];
+	for (var i=0;i<allDetails.length;i++){
+		if (allDetails[i][1]==month){
+			filteredDetails.push(allDetails[i]);
+		}
+	}
+	tableLoop(filteredDetails);
+
+}
+
+function tableLoop(k){
+		
+	var table = document.createElement('table'), tr, td, row, cell,head;
+	var thr = document.createElement('tr');
+	var hello = ['Date','Month','Expense Category','Amount', 'Details'];
+	for (row = 0; row < hello.length; row++) {
+    	th = document.createElement('th');
+	    thr.appendChild(th);
+	    th.innerHTML = hello[row];
+    }
+    table.appendChild(thr);
+
+	for (row = 0; row < k.length; row++) {
+    	tr = document.createElement('tr');
+    	for (cell = 0; cell < k[row].length; cell++) {
+	        td = document.createElement('td');
+	        tr.appendChild(td);
+	        td.innerHTML = k[row][cell];
+    }
+    table.appendChild(tr);
+    table.setAttribute("id","para2")
+}
+document.getElementById('monthTable').appendChild(table);
+
+	}

@@ -152,3 +152,22 @@ h1 {
 
 }
 }
+
+/*-----------------------------------------------For Table Structure in Details List.html---------------------------*/
+#para2 {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid white;
+}
+
+#para2 td, #para2 th {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid white;
+}
+
+#para2>tr:nth-child(even) {background-color: grey;}
+
+#rangeSection {
+	overflow-x:auto;
+}
