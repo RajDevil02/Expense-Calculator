@@ -104,17 +104,19 @@ document.getElementById("greet").innerHTML = greeting;
 
 /*--------------------------------------------------------For Month Wise ----------------------------------------------------*/
 function OverallData(){/* This is same as allDetails() function*/
-	var url = "https://script.google.com/macros/s/AKfycbzFuxcwsH7du38xEDXVL7f93102cWfnx7vVxiwkZXZScqbTncKMLp0BCEvDZz3URNbD/exec";//"All Details Script"
+			var url = "https://script.google.com/macros/s/AKfycbzFuxcwsH7du38xEDXVL7f93102cWfnx7vVxiwkZXZScqbTncKMLp0BCEvDZz3URNbD/exec";//"All Details Script"
 	
-	fetch(url)
-	.then(d => d.json())
-	.then(d => {
-		monthFilter(d);
-		//document.getElementById("app").innerHTML = kk;
-		//document.getElementById("app1").value = d;
-	}).catch((err) => {
-    alert(err)
-});
+			fetch(url)
+			.then(d => d.json())
+			.then(d => {
+				monthFilter(d);
+				//document.getElementById("app").innerHTML = kk;
+				//document.getElementById("app1").value = d;
+			}).catch((err) => {
+		    alert(err)
+		});
+
+	
 	
 }
 
@@ -140,4 +142,36 @@ function sumInputs(res){
 	}
 	document.getElementById("amount").value = totalSum;
 	document.getElementById("totalCount").value = res.length;
+}
+
+/*------------------------Category Wise filter-------------*/
+
+function CategoryData(){/* This is same as allDetails() function*/
+			var url = "https://script.google.com/macros/s/AKfycbzFuxcwsH7du38xEDXVL7f93102cWfnx7vVxiwkZXZScqbTncKMLp0BCEvDZz3URNbD/exec";//"All Details Script"
+	
+			fetch(url)
+			.then(d => d.json())
+			.then(d => {
+				categoryFilter(d);
+				//document.getElementById("app").innerHTML = kk;
+				//document.getElementById("app1").value = d;
+			}).catch((err) => {
+		    alert(err)
+		});
+
+	
+	
+}
+
+function categoryFilter(allDetails){
+	var category = document.getElementById("categoryValue").value;
+	var filteredDetails = [];
+	for (var i=0;i<allDetails.length;i++){
+		if (allDetails[i][2]==category){
+			filteredDetails.push(allDetails[i]);
+		}
+	}
+	tableLoop(filteredDetails);
+	sumInputs(filteredDetails)
+
 }
