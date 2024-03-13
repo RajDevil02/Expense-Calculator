@@ -78,7 +78,7 @@ function checkfun1(res){
 }
 
 function checkfun2(res){
-  var idSet = ["Pho",  "DTH",  "Mod",  "Foo",  "Tra",  "Mov",  "Hai",  "Mon",  "Pet",  "Oth",  "Inv",  "Rei"];
+  var idSet = ["Pho",  "DTH",  "Mod",  "Foo",  "Tra",  "Mov",  "Hai",  "Mon",  "Pet",  "Oth",  "Inv",  "Rei","Medical"];
   for (var i=0; i<idSet.length;i++){
     var invalue = idSet[i];
     document.getElementById(invalue).value = res[i][1];
