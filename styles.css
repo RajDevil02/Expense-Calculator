@@ -108,6 +108,11 @@ input, select{
 	color: white;
 }
 
+.categoryGrid {
+display: grid;
+grid-template-columns: auto auto auto;
+justify-content: flex-start;
+}
 /*------------------------Media Queries--------------------*/
 @media only screen and (max-width: 600px) {
   .side-nav {
@@ -150,6 +155,12 @@ h1 {
 	color: #d7be0a;
 	font-size: 18px;
 
+}
+
+.categoryGrid {
+display: grid;
+grid-template-columns: auto auto;
+justify-content: flex-start;
 }
 }
 

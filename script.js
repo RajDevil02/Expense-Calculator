@@ -15,9 +15,11 @@ function gopost(){
 	var url = "https://script.google.com/macros/s/AKfycbwBPBhs2JVD70kxNhwS_JbrimDtkBnjW6dHK98XGQEq0NXpZ0hIal1iluRadRsDZ200Yw/exec";
 	
 	const daExpense = document.getElementById("dateex").value;
-	const drCategory = document.getElementById("cars").value;
+	const drCategory = document.querySelector('input[name="categories"]:checked').value;
 	const txAmount = document.getElementById("textAmount").value;
 	const txDetail  = document.getElementById("textDetail").value;
+	const spentLocation = document.getElementById("locationSpent").value
+	const mandatoryCheck = document.querySelector('input[name="mandate"]:checked').value;
 	const txMonth = findMonth();
 	
 	fetch(url, {
@@ -31,7 +33,7 @@ function gopost(){
     },
     redirect: 'follow', // manual, *follow, error
     //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify({date: daExpense, month: txMonth, category: drCategory, Amount: txAmount, detail: txDetail}) // body data type must match "Content-Type" header
+    body: JSON.stringify({date: daExpense, month: txMonth, category: drCategory, mandatory: mandatoryCheck, Amount: txAmount, location: spentLocation,detail: txDetail}) // body data type must match "Content-Type" header
   }).then(d=>{
   	alert("The Response is Submitted");
   });
@@ -54,6 +56,16 @@ if (time < 12) {
   greeting = "Good Evening";
 }
 document.getElementById("greet").innerHTML = greeting;
+
+const setDateOnLoad = () => {
+    var dateNow = new Date();
+    var formattedDate = dateNow.toISOString().split('T')[0]; // Formats the date as YYYY-MM-DD
+    document.getElementById("dateex").value = formattedDate;
+    console.log("YES");
+}
+setDateOnLoad()
+
+
 
 }
 
