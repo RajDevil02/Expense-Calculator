@@ -36,7 +36,7 @@
 			    <div><input type="radio" name="categories" value="Phone Recharge"><label>Phone Recharge</label></div>
 				<div><input type="radio" name="categories" value="DTH Recharge"><label>DTH Recharge</label></div>
 				<div><input type="radio" name="categories" value="Modem Recharge"><label>Modem Recharge</label></div>
-				
+				<div><input type="radio" name="categories" value="Groceries"><label>Groceries</label></div>
 				<div><input type="radio" name="categories" value="Travel"><label>Travel</label></div>
 				<div><input type="radio" name="categories" value="Movie"><label>Movie</label></div>
 				<div><input type="radio" name="categories" value="Haircut"><label>Haircut</label></div>
@@ -55,10 +55,18 @@
 			<input type="radio" name="mandate" value="No"><label>No</label></div>
 			<form id="myForm">
 			<p>Amount Spent: <input type="number" id="textAmount"></p>
-			<p>Location: <input type="text" id="locationSpent" value="Cuddalore"></p>
+			<p>Location: <input type="text" id="locationSpent" value="Bangalore"><button onclick="switchCity()">Switch</button></p> 
 			<p>Detail Of Expense: <input type="detail" id="textDetail"></p>
 			<p><button id="submit">Submit</button> <button id='resetFields' onclick="hello()">Reset</button></p>
 			</form>
+
+			<div id="fileUploadDivision">
+				<p>Upload the CSV File: <input type="file" id="file-input" accept=".csv"/>
+        <button id="file-submit-button">Click</button></p>
+			</div>
+			<div id='lastEntryMade'>
+				
+			</div>
 		</div>
 
 

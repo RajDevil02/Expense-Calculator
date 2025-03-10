@@ -61,7 +61,7 @@ const setDateOnLoad = () => {
     var dateNow = new Date();
     var formattedDate = dateNow.toISOString().split('T')[0]; // Formats the date as YYYY-MM-DD
     document.getElementById("dateex").value = formattedDate;
-    console.log("YES");
+    
 }
 setDateOnLoad()
 
@@ -111,6 +111,81 @@ document.getElementById("myForm").addEventListener("click", function(event){
 
 
 document.getElementById("submit").addEventListener("click", gopost);
+
+//-------------------------------------------------------Upload File Section--------------------------------------------
+const submitButton = document.getElementById("file-submit-button")
+//const fileContentArea = document.getElementById("file-content")
+const fileInput = document.getElementById('file-input')
+const dataURL = 'https://script.google.com/macros/s/AKfycbz1WWdbx6CVmPGF0l-_CrsUPB0IOMyOX7TyzhixOtTbCoO_l-vAIt0OJRIgi6W9Pf1xlQ/exec'
+var submitJsonArray = []
+submitButton.addEventListener('click',sendToAPI)
+
+
+function checkSplit(content) {
+    const lines = content.split('\r\n')
+    lines.forEach((line)=>{
+        const indiviualEntry = line.split(',')
+        const date = indiviualEntry[0]
+        const month = indiviualEntry[1]
+        const category = indiviualEntry[2]
+        const amount = +indiviualEntry[3]
+        const details = +indiviualEntry[4]
+        const location = indiviualEntry[5]
+        const mandatory = indiviualEntry[6]
+
+        submitJsonArray.push({
+            date,
+            month,
+            category,
+            amount,
+            details,
+            location,
+            mandatory
+        })
+    })
+
+    
+
+}
+
+async function sendToAPI(){
+    const fileElement = fileInput.files[0]
+    const reader = new FileReader()
+
+    reader.onload = async ()=>{
+        const content = reader.result
+        await checkSplit(content)
+        const sendDataToUrl = await fetch(dataURL,{
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+                
+            },
+            body: JSON.stringify(submitJsonArray)
+
+
+        })
+
+        alert("The Response is submitted")
+
+
+    }
+
+    reader.readAsText(fileElement)
+}
+
+function switchCity(){
+	var getCurrentLocation = document.getElementById("locationSpent")
+	if(getCurrentLocation.value=="Cuddalore"){
+		getCurrentLocation.value = "Bangalore"
+		
+	}
+	else if(getCurrentLocation.value=="Bangalore"){
+		getCurrentLocation.value = "Cuddalore"
+		
+	}
+}
 
 
 
