@@ -129,7 +129,7 @@ function checkSplit(content) {
         const month = indiviualEntry[1]
         const category = indiviualEntry[2]
         const amount = +indiviualEntry[3]
-        const details = +indiviualEntry[4]
+        const details = indiviualEntry[4]
         const location = indiviualEntry[5]
         const mandatory = indiviualEntry[6]
 
