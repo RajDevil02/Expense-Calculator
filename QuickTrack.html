@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Expense Chart</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="icon" type="image/x-icon" href="images/titlebar.png">
+	
+</head>
+<body onload="greetings()">
+	
+		<div class="side-nav" style="height: 100%">
+			<h2>Options</h2>
+			<hr>
+			<ol>
+				<li><a href="index.html">Main Page</a></li><hr>
+				<li><a href="QuickTrack.html">Quick Track</a></li><hr>
+				<li><a href="searchFill.html">Search filter</a></li><hr>
+				<li><a href="overallReport.html">Overall Report</a></li><hr>
+				<li><a href="Details List.html">Detailed List</a></li><hr>
+			</ol>		
+		</div>
+
+		<div class="header">
+			<h1 class="greetings">Hi Praveen!!! <span id="greet"></span></h1>
+		</div>
+		
+		<div class="entry">
+			<h3>Enter the expenses below</h3>
+			<div>
+				<label>Silk Board to Ecospace: </label>
+				<input type="number" name="fromSilkboard" id="fromSilkboard" value=35>
+				<button onclick="saveTravelDetails('fromSilkboard','Silkboard to Ecospace')">Submit</button>
+			</div>
+			<div>
+				<label>Ecospace to Silk Board: </label>
+				<input type="number" name="toSilkboard" id="toSilkboard" value=35>
+				<button onclick="saveTravelDetails('toSilkboard','Ecospace to Silkboard')">Submit</button>
+			</div>
+			
+			
+			
+		</div>
+
+
+		
+			
+			
+	</div>
+
+
+		
+
+		
+	<script type="text/javascript" src="QuickTrackScript.js"></script>
+
+</body>
+</html>
+
