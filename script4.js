@@ -108,7 +108,7 @@ function OverallData(){/* This is same as allDetails() function*/
 	
 			fetch(url)
 			.then(d => d.json())
-			.then(d => {
+						.then(d => {
 				monthFilter(d);
 				//document.getElementById("app").innerHTML = kk;
 				//document.getElementById("app1").value = d;
@@ -128,6 +128,7 @@ function monthFilter(allDetails){
 			filteredDetails.push(allDetails[i]);
 		}
 	}
+	filteredDetails = getExpectedDateString(filteredDetails)
 	tableLoop(filteredDetails);
 	sumInputs(filteredDetails)
 
@@ -171,7 +172,18 @@ function categoryFilter(allDetails){
 			filteredDetails.push(allDetails[i]);
 		}
 	}
+	filteredDetails = getExpectedDateString(filteredDetails)
 	tableLoop(filteredDetails);
 	sumInputs(filteredDetails)
 
+}
+
+/*----------------------------------Converting to correct Date string----------------------*/
+function getExpectedDateString(res){
+	var correctedDate = res.map((item)=>{
+		item[0] = new Date(item[0]).toLocaleDateString("en-GB")
+		return item
+	})
+	return correctedDate
+	//Sconsole.log(res)
 }

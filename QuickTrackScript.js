@@ -13,16 +13,16 @@ document.getElementById("greet").innerHTML = greeting;
 
 }
 
-function saveTravelDetails(travelPoint, detail){
+function saveTravelDetails(category, fieldId, detail, mandatory){
 
 	var url = "https://script.google.com/macros/s/AKfycbwBPBhs2JVD70kxNhwS_JbrimDtkBnjW6dHK98XGQEq0NXpZ0hIal1iluRadRsDZ200Yw/exec";
 	
 	const daExpense = new Date().toISOString().slice(0,10);
-	const drCategory = "Travel";
-	const txAmount = document.getElementById(travelPoint).value;
+	const drCategory = category
+	const txAmount = document.getElementById(fieldId).value;
 	const txDetail  = detail;
 	const spentLocation = "Bangalore"
-	const mandatoryCheck = "Yes";
+	const mandatoryCheck = mandatory? mandatory: "Yes";
 	const txMonth = findMonth();
 	
 	fetch(url, {
