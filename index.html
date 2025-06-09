@@ -55,9 +55,9 @@
 			<input type="radio" name="mandate" value="Yes" checked><label>Yes</label>
 			<input type="radio" name="mandate" value="No"><label>No</label></div>
 			<form id="myForm">
-			<p>Amount Spent: <input type="number" id="textAmount"></p>
+			<p>Amount Spent: <input type="number" id="textAmount"><button onclick="removeAmount()">Reset</button></p>
 			<p>Location: <input type="text" id="locationSpent" value="Bangalore"><button onclick="switchCity()">Switch</button></p> 
-			<p>Detail Of Expense: <input type="detail" id="textDetail"></p>
+			<p>Detail Of Expense: <input type="detail" id="textDetail"><button onclick="removeDetails()">Reset</button></p>
 			<p><button id="submit">Submit</button> <button id='resetFields' onclick="hello()">Reset</button></p>
 			</form>
 
@@ -79,7 +79,19 @@
 
 		
 
-		<script src="script.js"></script>
+		<script src="script.js">
+		</script>
+
+		<script>
+			function removeDetails(){
+				const getDetailExpenseElement = document.getElementById('textDetail')
+				getDetailExpenseElement.value = ''
+			}
+			function removeAmount(){
+				const getAmountElement = document.getElementById('textAmount')
+				getAmountElement.value = ''
+			}
+		</script>
 	
 
 </body>

@@ -69,6 +69,7 @@ setDateOnLoad()
 
 }
 
+
 function sample(check){
 	const daExpense = document.getElementById("dateex").value;
 	const drCategory = document.getElementById("cars").value;
