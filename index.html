@@ -1,99 +1,117 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Expense Chart</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="icon" type="image/x-icon" href="images/titlebar.png">
-	
-</head>
-<body onload="greetings()">
-	
-		<div class="side-nav" style="height: 100%">
-			<h2>Options</h2>
-			<hr>
-			<ol>
-				<li><a href="index.html">Main Page</a></li><hr>
-				<li><a href="QuickTrack.html">Quick Track</a></li><hr>
-				<li><a href="searchFill.html">Search filter</a></li><hr>
-				<li><a href="overallReport.html">Overall Report</a></li><hr>
-				<li><a href="Details List.html">Detailed List</a></li><hr>
-			</ol>		
-		</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Expense Chart</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="images/titlebar.png" />
+  </head>
+  <body onload="onLoadofPage()">
+    <div class="side-nav" style="height: 100%">
+      <h2>Options</h2>
+      <hr />
+      <ol>
+        <li><a href="index.html">Main Page</a></li>
+        <hr />
+        <li><a href="QuickTrack.html">Quick Track</a></li>
+        <hr />
+        <li><a href="searchFill.html">Search filter</a></li>
+        <hr />
+        <li><a href="overallReport.html">Overall Report</a></li>
+        <hr />
+        <li><a href="Details List.html">Detailed List</a></li>
+        <hr />
+      </ol>
+    </div>
 
-		<div class="header">
-			<h1 class="greetings">Hi Praveen!!! <span id="greet"></span></h1>
-		</div>
-		
-		<div class="entry">
-			<h3>Enter the expenses below</h3>
-			<div>
-			
-			<p>Date of Expense: <input type="date" id="dateex"></p>
-			<p>Category:</p>
-			<div class="categoryGrid">
-				<div><input type="radio" name="categories" value="Food" checked><label>Food</label></div>
-			    <div><input type="radio" name="categories" value="Phone Recharge"><label>Phone Recharge</label></div>
-				<div><input type="radio" name="categories" value="DTH Recharge"><label>DTH Recharge</label></div>
-				<div><input type="radio" name="categories" value="Modem Recharge"><label>Modem Recharge</label></div>
-				<div><input type="radio" name="categories" value="Groceries"><label>Groceries</label></div>
-				<div><input type="radio" name="categories" value="Travel"><label>Travel</label></div>
-				<div><input type="radio" name="categories" value="Movie"><label>Movie</label></div>
-				<div><input type="radio" name="categories" value="Haircut"><label>Haircut</label></div>
-				<div><input type="radio" name="categories" value="Monthly Quota"><label>Monthly Quota</label></div>
-				<div><input type="radio" name="categories" value="Petrol"><label>Petrol</label></div>
-				<div><input type="radio" name="categories" value="Other Expenses"><label>Other Expenses</label></div>
-				<div><input type="radio" name="categories" value="Investments"><label>Investments</label></div>
-				<div><input type="radio" name="categories" value="Reimbursed"><label>Reimbursed</label></div>
-				<div><input type="radio" name="categories" value="Medical"><label>Medical</label></div>
+    <div class="header">
+      <h1 class="greetings">Hi Praveen!!! <span id="greet"></span></h1>
+    </div>
 
-			</div>
-			<br>
+    <div class="entry">
+      <h3>Enter the expenses below</h3>
+      <div>
+        <p>Date of Expense: <input type="date" id="dateex" /></p>
+        <p>Category:</p>
+        <div class="categoryGrid" id="categoryGrid">
+          <div id="categoryValuesToDisplay">Loading...</div>
+        </div>
+        <br />
 
-			<div>Mandatory: 
-			<input type="radio" name="mandate" value="Yes" checked><label>Yes</label>
-			<input type="radio" name="mandate" value="No"><label>No</label></div>
-			<form id="myForm">
-			<p>Amount Spent: <input type="number" id="textAmount"><button onclick="removeAmount()">Reset</button></p>
-			<p>Location: <input type="text" id="locationSpent" value="Bangalore"><button onclick="switchCity()">Switch</button></p> 
-			<p>Detail Of Expense: <input type="detail" id="textDetail"><button onclick="removeDetails()">Reset</button></p>
-			<p><button id="submit">Submit</button> <button id='resetFields' onclick="hello()">Reset</button></p>
-			</form>
+        <div>
+          Mandatory:
+          <input type="radio" name="mandate" value="Yes" checked /><label
+            >Yes</label
+          >
+          <input type="radio" name="mandate" value="No" /><label>No</label>
+        </div>
+        <div>
+          Self:
+          <input type="radio" name="self" value="Yes" checked /><label
+            >Yes</label
+          >
+          <input type="radio" name="self" value="No" /><label>No</label>
+          <input type="radio" name="self" value="Included" /><label
+            >Included</label
+          >
+        </div>
+        <form id="myForm">
+          <p>
+            Amount Spent: <input type="number" id="textAmount" /><button
+              onclick="removeAmount()"
+            >
+              Reset
+            </button>
+          </p>
+          <p>
+            Location:
+            <input type="text" id="locationSpent" value="Bangalore" /><button
+              onclick="switchCity()"
+            >
+              Switch
+            </button>
+          </p>
+          <p>
+            Detail Of Expense: <input type="detail" id="textDetail" /><button
+              onclick="removeDetails()"
+            >
+              Reset
+            </button>
+          </p>
+          <p>
+            <button id="submit">Submit</button>
+            <button id="resetFields" onclick="hello()">Reset</button>
+          </p>
+        </form>
 
-			<div id="fileUploadDivision">
-				<p>Upload the CSV File: <input type="file" id="file-input" accept=".csv"/>
-        <button id="file-submit-button">Click</button></p>
-			</div>
-			<div id='lastEntryMade'>
-				
-			</div>
-		</div>
+        <div id="lastTenEntries">
+          <h3>Last 10 Entries</h3>
+          <div id="entriesContainer">Loading...</div>
+        </div>
 
+        <div id="fileUploadDivision">
+          <p>
+            Upload the CSV File:
+            <input type="file" id="file-input" accept=".csv" />
+            <button id="file-submit-button">Click</button>
+          </p>
+        </div>
+        <div id="lastEntryMade"></div>
+      </div>
+    </div>
 
-		
-			
-			
-	</div>
+    <script src="script_test.js"></script>
 
-
-		
-
-		<script src="script.js">
-		</script>
-
-		<script>
-			function removeDetails(){
-				const getDetailExpenseElement = document.getElementById('textDetail')
-				getDetailExpenseElement.value = ''
-			}
-			function removeAmount(){
-				const getAmountElement = document.getElementById('textAmount')
-				getAmountElement.value = ''
-			}
-		</script>
-	
-
-</body>
+    <script>
+      function removeDetails() {
+        const getDetailExpenseElement = document.getElementById("textDetail");
+        getDetailExpenseElement.value = "";
+      }
+      function removeAmount() {
+        const getAmountElement = document.getElementById("textAmount");
+        getAmountElement.value = "";
+      }
+    </script>
+  </body>
 </html>
-

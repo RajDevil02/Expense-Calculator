@@ -1,3 +1,10 @@
+function onLoadofPage(){
+    greetings()
+    
+getCategoryValuesToDisplay()
+getLastNExpenses()
+}
+
 function goget(){
 	var url = "https://script.google.com/macros/s/AKfycbwBPBhs2JVD70kxNhwS_JbrimDtkBnjW6dHK98XGQEq0NXpZ0hIal1iluRadRsDZ200Yw/exec";
 	
@@ -20,6 +27,7 @@ function gopost(){
 	const txDetail  = document.getElementById("textDetail").value;
 	const spentLocation = document.getElementById("locationSpent").value
 	const mandatoryCheck = document.querySelector('input[name="mandate"]:checked').value;
+  const selfCheck = document.querySelector('input[name="self"]:checked').value;
 	const txMonth = findMonth();
 	
 	fetch(url, {
@@ -33,10 +41,10 @@ function gopost(){
     },
     redirect: 'follow', // manual, *follow, error
     //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify({date: daExpense, month: txMonth, category: drCategory, mandatory: mandatoryCheck, Amount: txAmount, location: spentLocation,detail: txDetail}) // body data type must match "Content-Type" header
+    body: JSON.stringify({date: daExpense, month: txMonth, category: drCategory, mandatory: mandatoryCheck, self: selfCheck, Amount: txAmount, location: spentLocation,detail: txDetail}) // body data type must match "Content-Type" header
   }).then(d=>{
   	alert("The Response is Submitted");
-  });
+  }).then(()=>getLastNExpenses());
   
   
   
@@ -66,6 +74,48 @@ const setDateOnLoad = () => {
 setDateOnLoad()
 
 
+
+
+
+}
+
+async function  getCategoryValuesToDisplay(){
+  const url = "https://script.google.com/macros/s/AKfycbywJYmg-bhS610CgdxGGkSBWZY1xjL-z5XdXF1powKywblecqozoqcxMGr297ntb8BClg/exec"
+  const categoryEl = document.getElementById("categoryGrid")
+  
+
+  // keep UI empty (or show a minimal loading state) until data arrives
+  
+
+  try{
+    const response = await fetch(url)
+    //console.log('Category fetch response:', response)
+    
+    const data = await response.json()
+    
+    data.forEach((item)=>{
+        /*let categoryElement = document.createElement("div")
+        let radioInput = document.createElement("input")
+        radioInput.type = "radio"
+        radioInput.id = item
+        radioInput.name = "categories"
+        radioInput.value = item
+        let labelElement = document.createElement("label")
+        labelElement.htmlFor = item
+        labelElement.textContent = item
+        categoryElement.appendChild(radioInput)
+        categoryElement.appendChild(labelElement)
+        categoryElement.appendChild(document.createElement("br"))
+        categoryEl.appendChild(categoryElement)*/
+    })
+    //console.log('Category data:', data)
+    let categoryString = data.map((item)=> `<div><input type="radio" id="${item}" name="categories" value="${item}"><label for="${item}">${item}</label></div>`).join('')    
+
+    categoryEl.innerHTML = categoryString
+  } catch(err){
+    console.error('Error loading categories:', err)
+    // keep the UI empty on error
+  }
 
 }
 
@@ -112,6 +162,8 @@ document.getElementById("myForm").addEventListener("click", function(event){
 
 
 document.getElementById("submit").addEventListener("click", gopost);
+
+//---------------------------Last 10 Entries Section--------------------------------------------
 
 //-------------------------------------------------------Upload File Section--------------------------------------------
 const submitButton = document.getElementById("file-submit-button")
@@ -188,6 +240,16 @@ function switchCity(){
 	}
 }
 
+
+/*----------------------Get last ten entries----------------------*/
+async function getLastNExpenses(){
+  let noOfEntries = 10
+  const elementToReplace = document.getElementById("entriesContainer")
+  const url = `https://script.google.com/macros/s/AKfycbxoBJyLNbdKGCJpQAH4ZT6rOeqtv7p1qUs4dflRVqtCkNE7IkIEqOx3drHwznBG7kMY/exec?count=${noOfEntries}`
+  const response = await fetch(url)
+  const data = await response.json()
+  elementToReplace.innerHTML = data.map(entry => `<p>${new Date(entry[0]).toLocaleDateString("en-GB")} - ${entry[1]} - ${entry[2]} - ${entry[3]} - ${entry[4]} - ${entry[5]} - ${entry[6]} - ${entry[7]}</p>`).join('')
+}
 
 
 
