@@ -3,6 +3,7 @@ function onLoadofPage(){
     
 getCategoryValuesToDisplay()
 getLastNExpenses()
+getExpenseGroupType()
 }
 
 function goget(){
@@ -238,6 +239,9 @@ function switchCity(){
 		getCurrentLocation.value = "Cuddalore"
 		
 	}
+  else{
+    getCurrentLocation.value = "Cuddalore"
+  }
 }
 
 
@@ -251,6 +255,32 @@ async function getLastNExpenses(){
   elementToReplace.innerHTML = data.map(entry => `<p>${new Date(entry[0]).toLocaleDateString("en-GB")} - ${entry[1]} - ${entry[2]} - ${entry[3]} - ${entry[4]} - ${entry[5]} - ${entry[6]} - ${entry[7]}</p>`).join('')
 }
 
+
+/*-----------------------Get Expense group type-------------------- */
+
+async function getExpenseGroupType(){
+  const url = "https://script.google.com/macros/s/AKfycbyfSrMDjyqdPZPClyZwWu214djbrfeDEg_gcWoYb0kb83DAa0YQfzDxrg8bP-Zyjs4/exec"
+  const categoryEl = document.getElementById("peopleCategoryGroupToDisplay")
+  
+
+  // keep UI empty (or show a minimal loading state) until data arrives
+  
+
+  try{
+    const response = await fetch(url)
+    //console.log('Category fetch response:', response)
+    
+    const data = await response.json()
+    
+    
+    let categoryString = data.map((item)=> `<div><input type="radio" id="${item}" name="self" value="${item}"><label for="${item}">${item}</label></div>`).join('')    
+
+    categoryEl.innerHTML = categoryString
+  } catch(err){
+    console.error('Error loading categories:', err)
+    // keep the UI empty on error
+  }
+}
 
 
 //Details: HTML Page

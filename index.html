@@ -48,13 +48,7 @@
         </div>
         <div>
           Self:
-          <input type="radio" name="self" value="Yes" checked /><label
-            >Yes</label
-          >
-          <input type="radio" name="self" value="No" /><label>No</label>
-          <input type="radio" name="self" value="Included" /><label
-            >Included</label
-          >
+          <div id="peopleCategoryGroupToDisplay">Loading...</div>
         </div>
         <form id="myForm">
           <p>
@@ -70,7 +64,7 @@
               onclick="switchCity()"
             >
               Switch
-            </button>
+            </button> <button onclick="document.getElementById('locationSpent').value = 'NA'">NA</button>
           </p>
           <p>
             Detail Of Expense: <input type="detail" id="textDetail" /><button
